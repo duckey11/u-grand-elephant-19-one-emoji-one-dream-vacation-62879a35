@@ -18,6 +18,10 @@ def main() -> None:
     os.makedirs(os.path.dirname(OUTPUT_PATH), exist_ok=True)
     with open(OUTPUT_PATH, "w", encoding="utf-8", newline="") as f:
         f.write(EMOJI)
+    with open(OUTPUT_PATH, "r", encoding="utf-8", newline="") as f:
+        written = f.read()
+    if written != EMOJI:
+        raise ValueError("read-back mismatch: entry.txt does not match EMOJI")
 
 
 if __name__ == "__main__":
